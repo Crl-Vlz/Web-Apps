@@ -1,0 +1,43 @@
+:root{
+    --main-bg-color: #252525;
+    --sec-bg-color: #6930C3;
+    --sec-hover: #5719b9;
+    --main-accent: #64DFDF;
+    --sec-accent: #80FFDB;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+
+}
+
+body{
+  background-color: var(--main-bg-color);
+}
+
+h1 {
+  margin: 30px;
+  font-size: 8rem;
+  color: white;
+  font-family: 'Lobster', 'cursive';
+}
+
+p {
+  font-size: 2rem;
+  color: white;
+}
+
+img {
+  width: 80%;
+}
+
+.container{
+  font-family: 'Indie Flower', 'cursive';
+}

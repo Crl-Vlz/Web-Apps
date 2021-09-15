@@ -16,7 +16,7 @@ function sieve (n){
     array[1] = 0;
 
     for( var i = 0; i < n; i++){
-        if( array[i] == 1) primes.push(i + "\n");
+        if( array[i] == 1) primes.push(String.fromCharCode(10) + i);
     }
 
     return primes;
