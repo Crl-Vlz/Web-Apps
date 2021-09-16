@@ -1,0 +1,133 @@
+:root{
+    --main-bg-color: #252525;
+    --sec-bg-color: #6930C3;
+    --sec-hover: #5719b9;
+    --main-accent: #64DFDF;
+    --sec-accent: #80FFDB;
+}
+
+*{
+    background-color: var(--main-bg-color, black);
+    color: #AAA;
+}
+
+body{
+    background-color: var(--main-bg-color, black) !important;
+}
+
+div.card{
+    width: 30vw;
+    justify-content: left;
+}
+
+div#div-cards{
+    justify-content: center;
+}
+
+nav{
+    background-color: var(--sec-bg-color);
+}
+
+nav a{
+    border-radius: 0rem;
+    color: white !important;
+    background-color: var(--sec-bg-color);
+}
+
+nav a:hover{
+    font-weight: bolder;
+}
+
+.card-title a{
+    background-color: var(--main-bg-color);
+    color: var(--main-accent);
+    text-decoration: none;
+}
+
+.card-title a:hover{
+    color: var(--main-accent);
+    font-weight: bolder;
+}
+
+.pg-blog{
+    background-color: var(--sec-bg-color) !important;
+    color: white !important;
+}
+
+.pg-blog:hover{
+    background-color: var(--sec-hover) !important;
+}
+
+#pg-left{
+    margin-right: auto !important;
+}
+
+#pg-right{
+    margin-left: auto !important;
+}
+
+.btn-blog{
+    background-color: var(--main-accent) !important;
+    color: var(--main-bg-color) !important;
+}
+
+.btn-blog:hover{
+    background-color: var(--sec-accent) !important;
+}
+
+.btn-header{
+    background-color: var(--main-bg-color) !important;
+    color: white !important;
+    border-radius: 0rem !important;
+    border-color: white !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-right: none !important;
+    height: fit-content !important;
+}
+
+.btn-header:hover{
+    font-weight: bolder !important;
+}
+
+.grp-dark{
+    background-color: var(--main-bg-color) !important;
+}
+
+.grp-dark:hover{
+    background-color: var(--main-bg-color) !important;
+}
+
+.hdr-large{
+    width: 15vw !important;
+}
+
+#header{
+    width: 100% !important;
+}
+
+#about-us{
+    width: 40% !important;
+}
+
+#archives{
+    width: 25% !important;
+}
+
+a{
+    color: var(--main-accent) !important;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--sec-accent) !important;
+}
+
+#elsewhere{
+    width: 25% !important;
+}
+
+.blog-post{
+    border-bottom: white 0.3rem double !important;
+    border-top: white 0.3rem double !important;
+}
