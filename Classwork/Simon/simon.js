@@ -22,6 +22,7 @@ function checkAnswer(colour){
     }       
     else{
         new Audio("sounds/wrong.mp3").play();
+        simonChoice = [];
         //audio.play();
         game = false;
         explorer = 0;
