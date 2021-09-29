@@ -1,0 +1,46 @@
+:root {
+  --main-bg: hsl(222, 26%, 31%);
+  --toggle-bg: hsl(223, 31%, 20%);
+  --keypad-bg: hsl(223, 31%, 20%);
+  --screen-bg: hsl(224, 36%, 15%);
+  --key-sec-bg: hsl(225, 21%, 49%);
+  --key-sec-shadow: hsl(224, 28%, 35%);
+  --key-main-bg: hsl(6, 63%, 50%);
+  --toggle: hsl(6, 63%, 50%);
+  --key-main-shadow: hsl(6, 70%, 34%);
+  --key-bg: hsl(30, 25%, 89%);
+  --key-shadow: hsl(28, 16%, 65%);
+  --key-text: hsl(221, 14%, 31%);
+  --main-text: hsl(0, 0%, 100%);
+}
+
+* {
+  color: var(--main-text) !important;
+}
+
+.btn-calc {
+  background-color: var(--key-bg);
+  color: var(--key-text) !important;
+  box-shadow: 0vw 0.5vh var(--key-shadow);
+  width: 10vw;
+}
+
+#DEL {
+  background-color: var(--key-sec-bg) !important;
+  color: var(--main-text) !important;
+  box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
+}
+
+#RES {
+  background-color: var(--key-sec-bg) !important;
+  color: var(--main-text) !important;
+  box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
+  width: 30vw !important;
+}
+
+#Eq {
+  background-color: var(--key-main-bg) !important;
+  color: var(--main-text) !important;
+  box-shadow: 0vw 0.5vh var(--key-main-shadow) !important;
+  width: 30vw !important;
+}
