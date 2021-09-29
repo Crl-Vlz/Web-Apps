@@ -12,35 +12,120 @@
   --key-shadow: hsl(28, 16%, 65%);
   --key-text: hsl(221, 14%, 31%);
   --main-text: hsl(0, 0%, 100%);
+  /*--keyboard-width: 40vw;
+  --key-width: 7vw;
+  --big-key-width: 16vw;*/
+}
+
+@media screen and (min-width: 1080px) {
+  :root {
+    --keyboard-width: 40vw;
+    --key-width: 7vw;
+    --big-key-width: 16vw;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  :root {
+    --keyboard-width: 90vw;
+    --key-width: 15vw;
+    --big-key-width: 36vw;
+  }
 }
 
 * {
-  color: var(--main-text) !important;
+  background-color: var(--main-bg) !important;
+  color: var(--main-text);
+}
+
+.screen {
+  background-color: var(--screen-bg) !important;
+  height: 10% !important;
+  width: var(--keyboard-width) !important;
+  border-radius: 0.5rem !important;
+}
+
+.result {
+  display: flex;
+  height: 6% !important;
+  background-color: inherit !important;
+  align-items: center !important;
+}
+
+.keyboard {
+  background-color: var(--keypad-bg) !important;
+  width: var(--keyboard-width) !important;
+  height: 80% !important;
+  border-radius: 0.5rem;
+}
+
+.keyboard div {
+  background-color: var(--keypad-bg) !important;
+  height: 80% !important;
 }
 
 .btn-calc {
-  background-color: var(--key-bg);
+  background-color: var(--key-bg) !important;
   color: var(--key-text) !important;
   box-shadow: 0vw 0.5vh var(--key-shadow);
-  width: 10vw;
+  width: var(--key-width) !important;
+}
+
+.pressedCalc {
+  background-color: var(--key-shadow) !important;
 }
 
 #DEL {
   background-color: var(--key-sec-bg) !important;
   color: var(--main-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
+  height: 100% !important;
 }
 
 #RES {
   background-color: var(--key-sec-bg) !important;
   color: var(--main-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
-  width: 30vw !important;
+  width: var(--big-key-width) !important;
+  height: 100% !important;
+}
+
+.pressedSec {
+  background-color: var(--key-sec-shadow) !important;
 }
 
 #Eq {
   background-color: var(--key-main-bg) !important;
   color: var(--main-text) !important;
   box-shadow: 0vw 0.5vh var(--key-main-shadow) !important;
-  width: 30vw !important;
+  width: var(--big-key-width) !important;
+  height: 100% !important;
+}
+
+.pressedEq {
+  background-color: var(--key-shadow) !important;
+}
+
+input[type="range"]#slider::-webkit-slider-thumb {
+  background-color: var(--toggle) !important;
+}
+
+input[type="range"]#slider::-moz-range-thumb {
+  background-color: var(--toggle) !important;
+}
+
+input[type="range"]#slider::-ms-thumb {
+  background-color: var(--toggle) !important;
+}
+
+input[type="range"]#slider:focus::-webkit-slider-thumb {
+  box-shadow: none !important;
+}
+
+input[type="range"]#slider:focus::-moz-range-thumb {
+  box-shadow: none !important;
+}
+
+input[type="range"]#slider:focus::-ms-thumb {
+  box-shadow: none !important;
 }
