@@ -2,20 +2,6 @@ var dict = {};
 
 //Dictionary with values of theme 1, default theme
 
-/*dict["--main-bg"] = "hsl(222, 26%, 31%)";
-dict["--toggle-bg"] = "hsl(223, 31%, 20%)";
-dict["--keypad-bg"] = "hsl(223, 31%, 20%)";
-dict["--screen-bg"] = "hsl(224, 36%, 15%)";
-dict["--key-sec-bg"] = "hsl(225, 21%, 49%)";
-dict["--key-sec-shadow"] = "hsl(224, 28%, 35%)";
-dict["--key-main-bg"] = "hsl(6, 63%, 50%)";
-dict["--toggle"] = "hsl(6, 63%, 50%)";
-dict["--key-main-shadow"] = "hsl(6, 70%, 34%)";
-dict["--key-bg"] = "hsl(30, 25%, 89%)";
-dict["--key-shadow"] = "hsl(28, 16%, 65%)";
-dict["--key-text"] = "hsl(221, 14%, 31%)";
-dict["--main-text"] = "hsl(0, 0%, 100%)";*/
-
 var root = document.querySelector(":root");
 var styles = getComputedStyle(root);
 
@@ -25,6 +11,8 @@ var oper = "";
 var dotted = false;
 
 var inOp = false;
+
+var showAd = false;
 
 function setStyles1() {
   dict["--main-bg"] = "hsl(222, 26%, 31%)";
@@ -114,6 +102,8 @@ function operateBasic(x, y, operand) {
     return x * y;
   } else if (operand === "/") {
     return x / y;
+  } else if (operand === "x**y") {
+    return x ** y;
   }
 }
 
@@ -132,6 +122,9 @@ function checkIfOperand(operand) {
     return true;
   } else if (operand === "=") {
     return true;
+  } else if (operand === "x**y") {
+    oper = "x**y";
+    return true;
   }
   return false;
 }
@@ -146,7 +139,6 @@ function checkIfFun(operand) {
 }
 
 function convertToID(key) {
-  if (key === "DEL" || key === "RESET" || key === "x") return key;
   switch (key) {
     case "1":
       return "one";
@@ -180,30 +172,10 @@ function convertToID(key) {
       return "Eq";
     case "RESET":
       return "RES";
+    default:
+      return key;
   }
 }
-
-/*function normalKey(key) {
-  switch (key) {
-    case "one":
-    case "two":
-    case "three":
-    case "four":
-    case "five":
-    case "six":
-    case "seven":
-    case "eight":
-    case "nine":
-    case "zero":
-    case "dot":
-    case "sum":
-    case "min":
-    case "d":
-      return true;
-    default:
-      return false;
-  }
-}*/
 
 function operate(key) {
   var ident = convertToID(key);
@@ -272,10 +244,61 @@ function operate(key) {
   }
 }
 
+function advancedOperation(x, key) {
+  switch (key) {
+    case "sin":
+      return Math.sin(x);
+    case "cos":
+      return Math.cos(x);
+    case "tan":
+      return Math.tan(x);
+    case "x**2":
+      return x ** 2;
+    case "sqrt":
+      return Math.sqrt(x);
+  }
+}
+
+function operateAv(key) {
+  document.getElementById(key).classList.add("pressedCalc");
+  setTimeout(() => {
+    document.getElementById(key).classList.remove("pressedCalc");
+  }, 200);
+  if (!inOp) {
+    x = String(advancedOperation(Number(x), key)).substring(0, 14);
+    $(".result").text(x);
+  } else {
+    y = String(advancedOperation(Number(y), key)).substring(0, 14);
+    $(".result").text(y);
+  }
+}
+
 document.querySelectorAll(".btn-calc").forEach((element) => {
   element.addEventListener("click", () => {
     var key = element.textContent;
     operate(key);
+  });
+});
+
+document.querySelectorAll(".btn-ad-calc").forEach((element) => {
+  element.addEventListener("click", () => {
+    var key = element.textContent;
+    if (key === "x**y") operate(key);
+    else operateAv(key);
+  });
+});
+
+document.querySelectorAll(".btn-show").forEach((element) => {
+  element.addEventListener("click", () => {
+    if (showAd) {
+      document.querySelector("#av-Keys").classList.add("hidden");
+      $("#show").text("Show");
+      showAd = false;
+    } else {
+      document.querySelector("#av-Keys").classList.remove("hidden");
+      $("#show").text("Hide");
+      showAd = true;
+    }
   });
 });
 

@@ -21,6 +21,7 @@
     --keyboard-width: 40vw;
     --key-width: 7vw;
     --big-key-width: 16vw;
+    --av-key-width: 4vw;
   }
 }
 
@@ -29,6 +30,7 @@
     --keyboard-width: 90vw;
     --key-width: 15vw;
     --big-key-width: 36vw;
+    --av-key-width: 9vw;
   }
 }
 
@@ -84,6 +86,52 @@
   box-shadow: 0vw 0.5vh var(--key-shadow);
   width: var(--key-width) !important;
   border-radius: 0.5rem !important;
+}
+
+.btn-show {
+  background-color: var(--key-bg) !important;
+  color: var(--key-text) !important;
+  box-shadow: 0vw 0.5vh var(--key-shadow);
+  width: var(--key-width) !important;
+  border-radius: 0.5rem !important;
+}
+
+.btn-ad-calc {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: var(--key-bg) !important;
+  color: var(--key-text) !important;
+  box-shadow: 0vw 0.3vh var(--key-shadow);
+  width: var(--av-key-width) !important;
+  border-radius: 0.5rem !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hidden div {
+  display: none !important;
+}
+
+.hidden div p {
+  display: none !important;
+}
+
+#av-Keys {
+  width: var(--keyboard-width) !important;
+  background-color: var(--keypad-bg) !important;
+  border-radius: 0.5rem !important;
+  height: 5rem !important;
+  align-items: center !important;
+  margin-top: 1% !important;
+  margin-bottom: -2% !important;
+  /*z-index: 1 !important;*/
+}
+
+.key-bg {
+  background-color: var(--keypad-bg) !important;
 }
 
 .pressedCalc {
