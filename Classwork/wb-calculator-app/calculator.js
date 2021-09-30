@@ -2,7 +2,7 @@ var dict = {};
 
 //Dictionary with values of theme 1, default theme
 
-dict["--main-bg"] = "hsl(222, 26%, 31%)";
+/*dict["--main-bg"] = "hsl(222, 26%, 31%)";
 dict["--toggle-bg"] = "hsl(223, 31%, 20%)";
 dict["--keypad-bg"] = "hsl(223, 31%, 20%)";
 dict["--screen-bg"] = "hsl(224, 36%, 15%)";
@@ -14,7 +14,7 @@ dict["--key-main-shadow"] = "hsl(6, 70%, 34%)";
 dict["--key-bg"] = "hsl(30, 25%, 89%)";
 dict["--key-shadow"] = "hsl(28, 16%, 65%)";
 dict["--key-text"] = "hsl(221, 14%, 31%)";
-dict["--main-text"] = "hsl(0, 0%, 100%)";
+dict["--main-text"] = "hsl(0, 0%, 100%)";*/
 
 var root = document.querySelector(":root");
 var styles = getComputedStyle(root);
@@ -32,8 +32,9 @@ function setStyles1() {
   dict["--key-bg"] = "hsl(30, 25%, 89%)";
   dict["--key-shadow"] = "hsl(28, 16%, 65%)";
   dict["--key-text"] = "hsl(221, 14%, 31%)";
+  dict["--key-sec-text"] = "hsl(0, 0%, 100%)";
+  dict["--key-main-text"] = "hsl(0, 0%, 100%)";
   dict["--main-text"] = "hsl(0, 0%, 100%)";
-  $("#Eq").css("color", "var(--main-text)");
 }
 
 function setStyles2() {
@@ -49,11 +50,12 @@ function setStyles2() {
   dict["--key-bg"] = "hsl(45, 7%, 89%)";
   dict["--key-shadow"] = "hsl(35, 11%, 61%)";
   dict["--key-text"] = "hsl(60, 10%, 19%)";
+  dict["--key-sec-text"] = "hsl(0, 0%, 100%)";
+  dict["--key-main-text"] = "hsl(0, 0%, 100%)";
   dict["--main-text"] = "hsl(0, 0, 100%)";
-  $("#Eq").css("color", "var(--main-text)");
 }
 
-function setStyles2() {
+function setStyles3() {
   dict["--main-bg"] = "hsl(268, 75%, 9%)";
   dict["--toggle-bg"] = "hsl(268, 71%, 12%)";
   dict["--keypad-bg"] = "hsl(268, 71%, 12%)";
@@ -66,8 +68,9 @@ function setStyles2() {
   dict["--key-bg"] = " hsl(268, 47%, 21%)";
   dict["--key-shadow"] = "hsl(290, 70%, 36%)";
   dict["--key-text"] = "hsl(52, 100%, 62%)";
+  dict["--key-sec-text"] = "hsl(0, 0%, 100%)";
+  dict["--key-main-text"] = "hsl(198, 20%, 13%)";
   dict["--main-text"] = "hsl(0, 0, 100%)";
-  $("#Eq").css("color", "hsl(52, 100%, 62%)");
 }
 
 function updateStyles() {
@@ -75,3 +78,33 @@ function updateStyles() {
     root.style.setProperty(i, dict[i]);
   }
 }
+
+function changeStyles() {
+  if (rangeInput.value === "0") {
+    setStyles1();
+  } else if (rangeInput.value === "1") {
+    setStyles2();
+  } else if (rangeInput.value === "2") {
+    setStyles3();
+  }
+  updateStyles();
+}
+
+var rangeInput = document.getElementById("slider");
+
+$("#slider").change(() => {
+  $("#slider").attr("value", rangeInput.value);
+  changeStyles();
+  //window.location.reload(false);
+});
+
+/*rangeInput.addEventListener("change", () => {
+  if (rangeInput.value === 1) {
+    setStyles1();
+  } else if (rangeInput === 2) {
+    setStyles2();
+  } else if (rangeInput === 3) {
+    setStyles3();
+  }
+  updateStyles();
+});*/

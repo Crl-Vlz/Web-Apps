@@ -11,6 +11,8 @@
   --key-bg: hsl(30, 25%, 89%);
   --key-shadow: hsl(28, 16%, 65%);
   --key-text: hsl(221, 14%, 31%);
+  --key-sec-text: hsl(0, 0%, 100%);
+  --key-main-text: hsl(0, 0%, 100%);
   --main-text: hsl(0, 0%, 100%);
   /*--keyboard-width: 40vw;
   --key-width: 7vw;
@@ -36,6 +38,11 @@
 * {
   background-color: var(--main-bg) !important;
   color: var(--main-text);
+}
+
+#header {
+  background-color: var(--main-bg) !important;
+  width: var(--keyboard-width) !important;
 }
 
 .screen {
@@ -77,14 +84,14 @@
 
 #DEL {
   background-color: var(--key-sec-bg) !important;
-  color: var(--main-text) !important;
+  color: var(--key-sec-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
   height: 100% !important;
 }
 
 #RES {
   background-color: var(--key-sec-bg) !important;
-  color: var(--main-text) !important;
+  color: var(--key-sec-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
   width: var(--big-key-width) !important;
   height: 100% !important;
@@ -96,7 +103,7 @@
 
 #Eq {
   background-color: var(--key-main-bg) !important;
-  color: var(--main-text) !important;
+  color: var(--key-main-text) !important;
   box-shadow: 0vw 0.5vh var(--key-main-shadow) !important;
   width: var(--big-key-width) !important;
   height: 100% !important;

@@ -12,26 +12,47 @@
     <title>Calculator app</title>
   </head>
   <body>
+    <!--Main container-->
     <main class="container">
-      <div class="row">
-        <h1 class="col">calc</h1>
-        <div class="container col row">
-          <h2 class="col">THEME</h2>
-          <div class="container col">
-            <div class="row col">
-              <p class="col d-flex justify-content-start">1</p>
-              <p class="col d-flex justify-content-around">2</p>
-              <p class="col d-flex justify-content-end">3</p>
-            </div>
-            <div class="row">
-              <input
-                type="range"
-                id="slider"
-                min="0"
-                max="2"
-                value="0"
-                class="form-range col"
-              />
+      <!--Header-->
+      <div class="container d-flex justify-content-center">
+        <div
+          class="
+            container
+            d-flex
+            justify-content-between
+            screen
+            my-3
+            align-items-center
+            row
+          "
+          id="header"
+        >
+          <h1 class="col">calc</h1>
+          <!--Controls-->
+          <div
+            class="container col row d-flex justify-content-end"
+            id="controls"
+          >
+            <h2 class="col">THEME</h2>
+            <div class="container col d-flex flex-column">
+              <!--Numbers-->
+              <div class="row d-flex" id="numbers">
+                <p class="col d-flex justify-content-start">1</p>
+                <p class="col d-flex justify-content-around">2</p>
+                <p class="col d-flex justify-content-end">3</p>
+              </div>
+              <!--Slider-->
+              <div class="row" id="sldr">
+                <input
+                  type="range"
+                  id="slider"
+                  min="0"
+                  max="2"
+                  value="0"
+                  class="form-range col"
+                />
+              </div>
             </div>
           </div>
         </div>
