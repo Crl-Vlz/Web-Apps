@@ -23,27 +23,30 @@
             justify-content-between
             screen
             my-3
-            align-items-center
+            align-items-end
             row
           "
           id="header"
         >
-          <h1 class="col">calc</h1>
+          <h1 class="col h4">calc</h1>
           <!--Controls-->
           <div
             class="container col row d-flex justify-content-end"
             id="controls"
           >
-            <h2 class="col">THEME</h2>
-            <div class="container col d-flex flex-column">
+            <div class="row">
+              <div class="col"></div>
               <!--Numbers-->
-              <div class="row d-flex" id="numbers">
-                <p class="col d-flex justify-content-start">1</p>
-                <p class="col d-flex justify-content-around">2</p>
-                <p class="col d-flex justify-content-end">3</p>
+              <div class="col d-flex justify-content-between" id="numbers">
+                <p class="d-flex justify-content-start theme">1</p>
+                <p class="d-flex justify-content-around theme">2</p>
+                <p class="d-flex justify-content-end theme">3</p>
               </div>
-              <!--Slider-->
-              <div class="row" id="sldr">
+            </div>
+            <!--Slider-->
+            <div class="row">
+              <h2 class="col theme">THEME</h2>
+              <div class="col" id="sldr">
                 <input
                   type="range"
                   id="slider"
@@ -57,17 +60,10 @@
           </div>
         </div>
       </div>
+      <!--Screen-->
       <div class="container">
-        <div
-          class="
-            container
-            d-flex
-            justify-content-end
-            screen
-            my-3
-            align-items-center
-          "
-        >
+        <div class="container d-flex justify-content-end screen my-3">
+          <!--Result-->
           <p class="result">0</p>
         </div>
       </div>
@@ -84,66 +80,66 @@
       >
         <div class="row">
           <div class="col">
-            <p class="btn btn-calc">7</p>
+            <p id="seven" class="btn btn-calc">7</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">8</p>
+            <p id="eight" class="btn btn-calc">8</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">9</p>
+            <p id="nine" class="btn btn-calc">9</p>
           </div>
           <div class="col">
-            <p id="DEL" class="btn btn-calc">DEL</p>
+            <p id="DEL" class="btn btn-calc DEL">DEL</p>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <p class="btn btn-calc">4</p>
+            <p id="four" class="btn btn-calc">4</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">5</p>
+            <p id="five" class="btn btn-calc">5</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">6</p>
+            <p id="six" class="btn btn-calc">6</p>
           </div>
-          <div id="+" class="col">
-            <p class="btn btn-calc">+</p>
+          <div class="col">
+            <p id="sum" class="btn btn-calc">+</p>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <p class="btn btn-calc">1</p>
+            <p id="one" class="btn btn-calc">1</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">2</p>
+            <p id="two" class="btn btn-calc">2</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">3</p>
+            <p id="three" class="btn btn-calc">3</p>
           </div>
-          <div id="-" class="col">
-            <p class="btn btn-calc">-</p>
+          <div class="col">
+            <p id="min" class="btn btn-calc">-</p>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <p class="btn btn-calc">.</p>
+            <p id="dot" class="btn btn-calc">.</p>
           </div>
           <div class="col">
-            <p class="btn btn-calc">0</p>
+            <p id="zero" class="btn btn-calc">0</p>
           </div>
-          <div id="/" class="col">
-            <p class="btn btn-calc">/</p>
+          <div class="col">
+            <p id="d" class="btn btn-calc">/</p>
           </div>
-          <div id="x" class="col">
-            <p class="btn btn-calc">x</p>
+          <div class="col">
+            <p id="x" class="btn btn-calc">x</p>
           </div>
         </div>
         <div class="row">
           <div class="col-6 d-flex justify-content-around">
-            <p id="RES" class="btn btn-calc">RESET</p>
+            <p id="RES" class="btn btn-calc RES">RESET</p>
           </div>
           <div class="col-6 d-flex justify-content-around">
-            <p id="Eq" class="btn btn-calc">=</p>
+            <p id="Eq" class="btn btn-calc Eq">=</p>
           </div>
         </div>
       </div>

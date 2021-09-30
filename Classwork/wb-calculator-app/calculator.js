@@ -19,6 +19,12 @@ dict["--main-text"] = "hsl(0, 0%, 100%)";*/
 var root = document.querySelector(":root");
 var styles = getComputedStyle(root);
 
+var x = "";
+var y = "";
+var oper = "";
+
+var inOp = false;
+
 function setStyles1() {
   dict["--main-bg"] = "hsl(222, 26%, 31%)";
   dict["--toggle-bg"] = "hsl(223, 31%, 20%)";
@@ -52,7 +58,7 @@ function setStyles2() {
   dict["--key-text"] = "hsl(60, 10%, 19%)";
   dict["--key-sec-text"] = "hsl(0, 0%, 100%)";
   dict["--key-main-text"] = "hsl(0, 0%, 100%)";
-  dict["--main-text"] = "hsl(0, 0, 100%)";
+  dict["--main-text"] = "hsl(60, 10%, 19%)";
 }
 
 function setStyles3() {
@@ -70,7 +76,7 @@ function setStyles3() {
   dict["--key-text"] = "hsl(52, 100%, 62%)";
   dict["--key-sec-text"] = "hsl(0, 0%, 100%)";
   dict["--key-main-text"] = "hsl(198, 20%, 13%)";
-  dict["--main-text"] = "hsl(0, 0, 100%)";
+  dict["--main-text"] = "hsl(52, 100%, 62%)";
 }
 
 function updateStyles() {
@@ -98,13 +104,199 @@ $("#slider").change(() => {
   //window.location.reload(false);
 });
 
-/*rangeInput.addEventListener("change", () => {
-  if (rangeInput.value === 1) {
-    setStyles1();
-  } else if (rangeInput === 2) {
-    setStyles2();
-  } else if (rangeInput === 3) {
-    setStyles3();
+function operateBasic(x, y, operand) {
+  if (operand === "+") {
+    return x + y;
+  } else if (operand === "-") {
+    return x - y;
+  } else if (operand === "x") {
+    return x * y;
+  } else if (operand === "/") {
+    return x / y;
   }
-  updateStyles();
-});*/
+}
+
+function checkIfOperand(operand) {
+  if (operand === "+") {
+    oper = "+";
+    return true;
+  } else if (operand === "-") {
+    oper = "-";
+    return true;
+  } else if (operand === "x") {
+    oper = "x";
+    return true;
+  } else if (operand === "/") {
+    oper = "/";
+    return true;
+  } else if (operand === "=") {
+    return true;
+  }
+  return false;
+}
+
+function checkIfFun(operand) {
+  if (operand === "DEL") {
+    return true;
+  } else if (operand === "RESET") {
+    return true;
+  }
+  return false;
+}
+
+function convertToID(key) {
+  if (key === "DEL" || key === "RESET" || key === "x") return key;
+  switch (key) {
+    case "1":
+      return "one";
+    case "2":
+      return "two";
+    case "3":
+      return "three";
+    case "4":
+      return "four";
+    case "5":
+      return "five";
+    case "6":
+      return "six";
+    case "7":
+      return "seven";
+    case "8":
+      return "eight";
+    case "9":
+      return "nine";
+    case "0":
+      return "zero";
+    case ".":
+      return "dot";
+    case "+":
+      return "sum";
+    case "-":
+      return "min";
+    case "/":
+      return "d";
+    case "=":
+      return "Eq";
+    case "RESET":
+      return "RES";
+  }
+}
+
+/*function normalKey(key) {
+  switch (key) {
+    case "one":
+    case "two":
+    case "three":
+    case "four":
+    case "five":
+    case "six":
+    case "seven":
+    case "eight":
+    case "nine":
+    case "zero":
+    case "dot":
+    case "sum":
+    case "min":
+    case "d":
+      return true;
+    default:
+      return false;
+  }
+}*/
+
+function operate(key) {
+  var ident = convertToID(key);
+  if (ident === "RESET") ident = "RES";
+  var cl = "pressedCalc";
+  if (ident === "Eq") cl = "pressedEq";
+  if (ident === "DEL" || ident === "RES") cl = "pressedSec";
+  document.getElementById(ident).classList.add(cl);
+  setTimeout(() => {
+    document.getElementById(ident).classList.remove(cl);
+  }, 200);
+  var isOperand = checkIfOperand(key);
+  if (checkIfFun(key)) {
+    if (key === "RESET") {
+      x = "";
+      y = "";
+      $(".result").text("0");
+      inOp = false;
+    } else {
+      if (inOp) {
+        y = "";
+        $(".result").text("0");
+      } else {
+        x = "";
+        $(".result").text("0");
+      }
+    }
+  } else {
+    if (!isOperand && !inOp) {
+      if (key === "0") {
+        $(".result").text("0");
+      } else {
+        if (x.length < 14) x += key;
+        $(".result").text(x);
+      }
+    } else if (!isOperand && inOp) {
+      if (key === "0") {
+        $(".result").text("0");
+      } else {
+        if (y.length < 14) y += key;
+        $(".result").text(y);
+      }
+    } else if (isOperand && !inOp) {
+      if (key !== "=") {
+        $(".result").text("0");
+        inOp = true;
+      } else {
+        if (x.length >= 1) $(".result").text(x);
+        else $(".result").text("0");
+        x = "";
+      }
+    } else if (isOperand && inOp) {
+      x = String(operateBasic(Number(x), Number(y), oper)).substring(0, 14);
+      y = "";
+      $(".result").text(x);
+      if (key === "=") {
+        x = "";
+        inOp = false;
+      }
+    }
+  }
+}
+
+document.querySelectorAll(".btn-calc").forEach((element) => {
+  element.addEventListener("click", () => {
+    var key = element.textContent;
+    operate(key);
+  });
+});
+
+function validateKeypress(key) {
+  switch (key) {
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+    case "0":
+    case "+":
+    case "-":
+    case "/":
+    case "*":
+    case "c":
+    case "=":
+      return true;
+    default:
+      return false;
+  }
+}
+
+$(document).keydown((event) => {
+  if (validateKeypress(event.key)) operate(element);
+});

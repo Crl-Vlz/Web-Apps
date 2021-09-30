@@ -14,9 +14,6 @@
   --key-sec-text: hsl(0, 0%, 100%);
   --key-main-text: hsl(0, 0%, 100%);
   --main-text: hsl(0, 0%, 100%);
-  /*--keyboard-width: 40vw;
-  --key-width: 7vw;
-  --big-key-width: 16vw;*/
 }
 
 @media screen and (min-width: 1080px) {
@@ -35,7 +32,11 @@
   }
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap");
+
 * {
+  font-family: "Spartan", sans-serif;
+  font-weight: bolder !important;
   background-color: var(--main-bg) !important;
   color: var(--main-text);
 }
@@ -43,6 +44,10 @@
 #header {
   background-color: var(--main-bg) !important;
   width: var(--keyboard-width) !important;
+}
+
+.theme {
+  font-size: 0.7rem !important;
 }
 
 .screen {
@@ -53,10 +58,12 @@
 }
 
 .result {
+  font-size: 32pt;
   display: flex;
-  height: 6% !important;
   background-color: inherit !important;
   align-items: center !important;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .keyboard {
@@ -76,20 +83,21 @@
   color: var(--key-text) !important;
   box-shadow: 0vw 0.5vh var(--key-shadow);
   width: var(--key-width) !important;
+  border-radius: 0.5rem !important;
 }
 
 .pressedCalc {
   background-color: var(--key-shadow) !important;
 }
 
-#DEL {
+.DEL {
   background-color: var(--key-sec-bg) !important;
   color: var(--key-sec-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
   height: 100% !important;
 }
 
-#RES {
+.RES {
   background-color: var(--key-sec-bg) !important;
   color: var(--key-sec-text) !important;
   box-shadow: 0vw 0.5vh var(--key-sec-shadow) !important;
@@ -101,7 +109,7 @@
   background-color: var(--key-sec-shadow) !important;
 }
 
-#Eq {
+.Eq {
   background-color: var(--key-main-bg) !important;
   color: var(--key-main-text) !important;
   box-shadow: 0vw 0.5vh var(--key-main-shadow) !important;
@@ -110,7 +118,7 @@
 }
 
 .pressedEq {
-  background-color: var(--key-shadow) !important;
+  background-color: var(--key-main-shadow) !important;
 }
 
 input[type="range"]#slider::-webkit-slider-thumb {
@@ -135,4 +143,46 @@ input[type="range"]#slider:focus::-moz-range-thumb {
 
 input[type="range"]#slider:focus::-ms-thumb {
   box-shadow: none !important;
+}
+
+input[type="range"]#slider:hover::-webkit-slider-thumb {
+  cursor: pointer !important;
+}
+
+input[type="range"]#slider:hover::-moz-range-thumb {
+  cursor: pointer !important;
+}
+
+input[type="range"]#slider:hover::-ms-thumb {
+  cursor: pointer !important;
+}
+
+input[type="range"]#slider::-webkit-slider-runnable-track {
+  background-color: var(--keypad-bg) !important;
+  height: 100% !important;
+  width: 120% !important;
+}
+
+input[type="range"]#slider::-moz-range-track {
+  background-color: var(--keypad-bg) !important;
+  height: 100% !important;
+  width: 120% !important;
+}
+
+input[type="range"]#slider::-ms-track {
+  background-color: var(--keypad-bg) !important;
+  height: 100% !important;
+  width: 120% !important;
+}
+
+input[type="range"]#slider:hover::-webkit-slider-runnable-track {
+  cursor: pointer !important;
+}
+
+input[type="range"]#slider:hover:-moz-range-track {
+  cursor: pointer !important;
+}
+
+input[type="range"]#slider:hover::-ms-track {
+  cursor: pointer !important;
 }
