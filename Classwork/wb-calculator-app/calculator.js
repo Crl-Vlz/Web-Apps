@@ -102,6 +102,8 @@ function operateBasic(x, y, operand) {
     return x * y;
   } else if (operand === "/") {
     return x / y;
+  } else if (operand === "x**y") {
+    return x ** y;
   }
 }
 
@@ -120,6 +122,9 @@ function checkIfOperand(operand) {
     return true;
   } else if (operand === "=") {
     return true;
+  } else if (operand === "x**y") {
+    oper = "x**y";
+    return true;
   }
   return false;
 }
@@ -134,7 +139,6 @@ function checkIfFun(operand) {
 }
 
 function convertToID(key) {
-  if (key === "DEL" || key === "RESET" || key === "x") return key;
   switch (key) {
     case "1":
       return "one";
@@ -168,6 +172,8 @@ function convertToID(key) {
       return "Eq";
     case "RESET":
       return "RES";
+    default:
+      return key;
   }
 }
 
@@ -238,6 +244,35 @@ function operate(key) {
   }
 }
 
+function advancedOperation(x, key) {
+  switch (key) {
+    case "sin":
+      return Math.sin(x);
+    case "cos":
+      return Math.cos(x);
+    case "tan":
+      return Math.tan(x);
+    case "x**2":
+      return x ** 2;
+    case "sqrt":
+      return Math.sqrt(x);
+  }
+}
+
+function operateAv(key) {
+  document.getElementById(key).classList.add("pressedCalc");
+  setTimeout(() => {
+    document.getElementById(key).classList.remove("pressedCalc");
+  }, 200);
+  if (!inOp) {
+    x = String(advancedOperation(Number(x), key)).substring(0, 14);
+    $(".result").text(x);
+  } else {
+    y = String(advancedOperation(Number(y), key)).substring(0, 14);
+    $(".result").text(y);
+  }
+}
+
 document.querySelectorAll(".btn-calc").forEach((element) => {
   element.addEventListener("click", () => {
     var key = element.textContent;
@@ -248,7 +283,8 @@ document.querySelectorAll(".btn-calc").forEach((element) => {
 document.querySelectorAll(".btn-ad-calc").forEach((element) => {
   element.addEventListener("click", () => {
     var key = element.textContent;
-    operate(key);
+    if (key === "x**y") operate(key);
+    else operateAv(key);
   });
 });
 
