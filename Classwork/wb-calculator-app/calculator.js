@@ -22,6 +22,7 @@ var styles = getComputedStyle(root);
 var x = "";
 var y = "";
 var oper = "";
+var dotted = false;
 
 var inOp = false;
 
@@ -231,37 +232,42 @@ function operate(key) {
       }
     }
   } else {
-    if (!isOperand && !inOp) {
-      if (key === "0") {
-        $(".result").text("0");
-      } else {
-        if (x.length < 14) x += key;
+    if (!dotted || key !== ".") {
+      if (!isOperand && !inOp) {
+        if (key === "0") {
+          $(".result").text("0");
+        } else {
+          if (x.length < 14) x += key;
+          $(".result").text(x);
+        }
+      } else if (!isOperand && inOp) {
+        if (key === "0") {
+          $(".result").text("0");
+        } else {
+          if (y.length < 14) y += key;
+          $(".result").text(y);
+        }
+      } else if (isOperand && !inOp) {
+        if (key !== "=") {
+          $(".result").text("0");
+          inOp = true;
+        } else {
+          if (x.length >= 1) $(".result").text(x);
+          else $(".result").text("0");
+          x = "";
+        }
+        dotted = false;
+      } else if (isOperand && inOp) {
+        x = String(operateBasic(Number(x), Number(y), oper)).substring(0, 14);
+        y = "";
         $(".result").text(x);
+        if (key === "=") {
+          x = "";
+          inOp = false;
+        }
+        dotted = false;
       }
-    } else if (!isOperand && inOp) {
-      if (key === "0") {
-        $(".result").text("0");
-      } else {
-        if (y.length < 14) y += key;
-        $(".result").text(y);
-      }
-    } else if (isOperand && !inOp) {
-      if (key !== "=") {
-        $(".result").text("0");
-        inOp = true;
-      } else {
-        if (x.length >= 1) $(".result").text(x);
-        else $(".result").text("0");
-        x = "";
-      }
-    } else if (isOperand && inOp) {
-      x = String(operateBasic(Number(x), Number(y), oper)).substring(0, 14);
-      y = "";
-      $(".result").text(x);
-      if (key === "=") {
-        x = "";
-        inOp = false;
-      }
+      if (key === ".") dotted = true;
     }
   }
 }
@@ -290,7 +296,10 @@ function validateKeypress(key) {
     case "/":
     case "*":
     case "c":
-    case "=":
+    case "d":
+    case "e":
+    case "\n":
+    case ".":
       return true;
     default:
       return false;
@@ -298,5 +307,12 @@ function validateKeypress(key) {
 }
 
 $(document).keydown((event) => {
-  if (validateKeypress(event.key)) operate(element);
+  if (validateKeypress(event.key)) {
+    var ky = event.key;
+    if (ky === "\n" || ky === "e") ky = "=";
+    if (ky === "*") ky = "x";
+    if (ky === "d") ky = "DEL";
+    if (ky === "c") ky = "RESET";
+    operate(ky);
+  }
 });
